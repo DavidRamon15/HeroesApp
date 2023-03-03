@@ -1,17 +1,17 @@
 
 import { useLocation, useNavigate } from 'react-router-dom';
-import queryString from 'query-string';
+
 import { useForm } from '../../hooks/useForm';
 import {HeroCard} from '../components';
 import { getHeroesByName } from '../helpers';
 
-
+import queryString from 'query-string'; 
 export const SearchPage = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { q = '' } = queryString.parse(location.search);
+  const { q=''} = queryString.parse(location.search);
   const heroes = getHeroesByName(q);
 
   const showSearch = q.length === 0;
@@ -37,7 +37,7 @@ export const SearchPage = () => {
       <div className="col-5">
         <h4>Searching</h4>
         <hr></hr>
-        <form  onSubmit={ onSearchSubmit }>
+        <form aria-label='form' onSubmit={ onSearchSubmit }>
           <input 
             type="text"
             placeholder="Search a hero "
@@ -58,11 +58,13 @@ export const SearchPage = () => {
         <hr></hr>
 
          
-        <div className="alert alert-primary animate__animated animate__fadeIn" style={{ display: showSearch ? '' : 'none'  }}>
+        <div className="alert alert-primary animate__animated animate__fadeIn" style={{ display: showSearch ? '' : 'none'  }}
+        aria-label="alert-primary">
           Search a hero
         </div>
 
-        <div className="alert alert-danger animate__animated animate__fadeIn" style={{ display: showError ? '' : 'none'  }}>
+        <div className="alert alert-danger animate__animated animate__fadeIn" style={{ display: showError ? '' : 'none'  }}
+        aria-label="alertDanger">
           No hero with <b>{q}</b>
         </div>
         {

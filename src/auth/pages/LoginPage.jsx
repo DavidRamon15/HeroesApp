@@ -12,7 +12,7 @@ export const LoginPage = () => {
     const lastPath = localStorage.getItem('lastPath') || '/';
     login('David Ramon');
 
-    navigate( lastPath , 
+    navigate( lastPath ,
       {
         replace:true
       }
